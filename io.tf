@@ -22,7 +22,7 @@ variable "coreos-aws" {
     type = ""
   }
 }
-variable "etcd-ips" { default = "10.0.0.10,10.0.0.11,10.0.0.12" }
+variable "etcd-ips" { default = "10.0.0.10" }
 variable "instance-type" {
   default = {
     bastion = "t2.nano"

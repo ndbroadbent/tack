@@ -30,13 +30,13 @@ resource "aws_launch_configuration" "worker" {
 resource "aws_autoscaling_group" "worker" {
   name = "worker"
 
-  desired_capacity = "5"
+  desired_capacity = "1"
   health_check_grace_period = 60
   health_check_type = "EC2"
   force_delete = true
   launch_configuration = "${ aws_launch_configuration.worker.name }"
-  max_size = "5"
-  min_size = "3"
+  max_size = "3"
+  min_size = "1"
   vpc_zone_identifier = [ "${ split(",", var.subnet-ids) }" ]
 
   tag {
