@@ -1,6 +1,6 @@
 SHELL += -eu
 
-AWS_REGION ?= us-west-1
+AWS_REGION ?= us-west-2
 COREOS_CHANNEL ?= stable
 COREOS_VM_TYPE ?= hvm
 
