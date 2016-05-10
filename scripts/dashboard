@@ -2,5 +2,6 @@
 
 kubectl proxy &
 echo "✓ kubectl proxy is listening"
+sleep 2
 open http://localhost:8001/ui
-sleep 1 && echo " "
+echo " "
