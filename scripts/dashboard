@@ -1,7 +1,10 @@
 #!/bin/bash -eu
 
-kubectl proxy &
-echo "✓ kubectl proxy is listening"
-sleep 2
-open http://localhost:8001/ui
-echo " "
+{
+  sleep 2
+  open http://localhost:8001/ui
+  echo
+} &
+
+echo "✓ starting kubectl proxy"
+kubectl proxy
