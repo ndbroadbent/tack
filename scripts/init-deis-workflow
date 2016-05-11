@@ -23,7 +23,7 @@ $HELMC repo list | grep -q deis || {
 $HELMC fetch deis/workflow-beta3
 
 # Generate various secrets
-$HELMC generate -x manifests workflow-beta3
+$HELMC generate --force -x manifests workflow-beta3
 
 # Inject deis workflow resources into cluster
 $HELMC install workflow-beta3
@@ -31,3 +31,8 @@ $HELMC install workflow-beta3
 
 # Show status of pods
 kubectl get pods --namespace=deis
+
+
+type deis >/dev/null 2>&1 || {
+  curl -sSL http://deis.io/deis-cli/install-v2.sh | bash
+}
