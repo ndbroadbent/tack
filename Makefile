@@ -18,6 +18,9 @@ tt:
 ## generate key-pair, variables and then `terraform apply`
 all: prereqs create-keypair ssl init apply
 	@printf "\nInitializing add-ons\n" && ./scripts/init-addons
+	@printf "\nInitializing Heapster\n" && ./scripts/init-heapster
+	@printf "\nInitializing Deis Workflow\n" && ./scripts/init-deis-workflow
+
 
 ## destroy and remove everything
 clean: destroy delete-keypair
@@ -52,9 +55,6 @@ ssh: ; @ssh -A core@`terraform output bastion-ip`
 
 ## create tls artifacts
 ssl: .cfssl
-
-## setup deis workflow
-deis-workflow: ; ./scripts/init-deis-workflow
 
 ## smoke it
 test: test-ssl test-route53 test-etcd
