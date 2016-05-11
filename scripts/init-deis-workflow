@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+# Check for helmc locally or in PATH
+HELMC="helmc"
+type $HELMC >/dev/null 2>&1 || {
+  HELMC="./helmc"
+  type $HELMC >/dev/null 2>&1 || {
+    echo "❤ Downloading helmc..."
+    curl -s https://get.helm.sh | bash
+  }
+}
+
+$HELMC --version
+$HELMC target
+kubectl version
+
+# Add deis workflow repo
+$HELMC repo list | grep -q deis || {
+  $HELMC repo add deis https://github.com/deis/charts
+}
+
+# Fetch deis workflow into local workspace
+$HELMC fetch deis/workflow-beta3
+
+# Generate various secrets
+$HELMC generate -x manifests workflow-beta3
+
+# Inject deis workflow resources into cluster
+$HELMC install workflow-beta3
+
+
+# Show status of pods
+kubectl get pods --namespace=deis

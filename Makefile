@@ -53,6 +53,9 @@ ssh: ; @ssh -A core@`terraform output bastion-ip`
 ## create tls artifacts
 ssl: .cfssl
 
+## setup deis workflow
+deis-workflow: ; ./scripts/init-deis-workflow
+
 ## smoke it
 test: test-ssl test-route53 test-etcd
 
