@@ -3,6 +3,8 @@ resource "aws_elb" "external" {
   subnets = [ "${ split(",", var.subnet-ids) }" ]
   cross_zone_load_balancing = false
   security_groups = [ "${ var.external-elb-security-group-id }" ]
+  # Deis workflow requires a large timeout for deploys
+  idle_timeout = 1200
 
   health_check {
     healthy_threshold = 2
