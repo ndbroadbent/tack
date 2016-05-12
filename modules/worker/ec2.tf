@@ -30,7 +30,7 @@ resource "aws_launch_configuration" "worker" {
 resource "aws_autoscaling_group" "worker" {
   name = "worker"
 
-  desired_capacity = "1"
+  desired_capacity = "${ var.desired_workers }"
   health_check_grace_period = 60
   health_check_type = "EC2"
   force_delete = true
