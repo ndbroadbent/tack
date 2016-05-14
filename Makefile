@@ -19,7 +19,7 @@ tt:
 all: prereqs create-keypair ssl init apply
 	@printf "\nInitializing add-ons\n" && ./scripts/init-addons
 	@printf "\nInitializing Heapster\n" && ./scripts/init-heapster
-	@printf "\nInitializing Deis Workflow\n" && ./scripts/init-deis-workflow
+	# @printf "\nInitializing Deis Workflow\n" && ./scripts/init-deis-workflow
 
 
 ## destroy and remove everything
