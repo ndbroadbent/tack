@@ -23,7 +23,7 @@ variable "coreos-aws" {
   }
 }
 variable "etcd-ips" { default = "10.0.0.10" }
-variable "desired_workers" { default = "2" }
+variable "desired-workers" { default = "2" }
 variable "instance-type" {
   default = {
     bastion = "t2.nano"

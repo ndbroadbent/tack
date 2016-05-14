@@ -98,6 +98,7 @@ module "worker" {
   security-group-id = "${ module.security.worker-id }"
   subnet-ids = "${ module.vpc.subnet-ids-private }"
   vpc-id = "${ module.vpc.id }"
+  desired-workers = "${ var.desired-workers }"
 }
 
 module "kubeconfig" {
